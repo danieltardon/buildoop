@@ -327,7 +327,7 @@ blocks of data over the network to Hadoop Distributed Filesystem
 %package httpfs
 Summary: HTTPFS for Hadoop
 Group: System/Daemons
-Requires: %{name}-hdfs = %{version}-%{release}
+Requires: %{name}-hdfs = %{version}-%{release}, tomcatserver
 Requires(pre): %{name} = %{version}-%{release}
 
 %description httpfs
@@ -662,6 +662,7 @@ fi
 %{lib_hadoop}/lib
 %{lib_hadoop}/sbin
 %{lib_hadoop}/bin
+%exclude %{lib_hadoop}/bin/fuse_dfs
 %{lib_hadoop}/etc
 %{lib_hadoop}/libexec/hadoop-config.sh
 %{lib_hadoop}/libexec/hadoop-layout.sh

@@ -202,7 +202,7 @@ export SPARK_MASTER_PORT=7077
 #export PATH=\$PATH:\$SCALA_HOME/bin
 
 ### change the following to specify a real cluster's Master host
-export STANDALONE_SPARK_MASTER_HOST=\`hostname\`
+export STANDALONE_SPARK_MASTER_HOST=hostname
 
 EOF
 

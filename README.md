@@ -27,7 +27,10 @@ From the technology point of view Buildoop is based on:
 2. Packaging recipes based on **JSON**.
 3. SIT Framework: based on Groovy test scripts, and **Vagrant** for
    virtual development enviroment.
-4. Set of **Kickstart**, **Cheff** and **Puppet** files for baremetal deployment.
+4. Set of **Puppet** files for baremetal deployment. Note: this feature
+has been delegated to the project Deploop [1]
+
+[1] https://github.com/deploop
 
 Folder scheme
 -------------
@@ -50,6 +53,42 @@ Folder scheme
 * toolchain:
 	Tools for cross-compiling for diferent targets.
 
+HowTo
+-----
+
+1. Download Groovy binary:
+
+  wget http://dl.bintray.com/groovy/maven/groovy-binary-2.3.3.zip
+2. Clone the project:
+
+  git clone https://github.com/buildoop/buildoop.git
+
+3. Set the enviroment:
+
+  cd buildoop && source set-buildoop-env
+
+4. In order to build some packages you need install some dependecies:
+
+  less buildoop/doc/DEPENDENCIES
+
+5. Usage examples:
+
+  - Build the whole ecosystem for the distribution openbus-0.0.1:
+
+    buildoop openbus-0.0.1 -build
+
+  - Build the zookeeper package for the distribuion openbus-0.0.1:
+
+    buildoop openbus-0.0.1 zookeeper -build
+
+  - List the available distributions:
+
+    buildoop -bom
+
+6. For more commands:
+
+  less buildoop/doc/README
+
 Read More
 ---------
 
@@ -66,28 +105,26 @@ ecosystem.
 
 The list of forked porjects are:
 
-- camus -
-
-	Forked from Marcelo Valle (https://github.com/mvalleavila).
-	The -mvallevila- fork from the original author of Camus has
-	some enhance from the original code.
-
-- flume-ng-kafka-sink -
-
-	Flume to Kafka Sink fork from Marcelo Valle.
-
-- storm-kafka-0.8-plus -
-
-	Storm Spout for Kafka fork from Thomas Becker (https://github.com/wurstmeister)
-
-- Storm-0.9.1-Kafka-0.8-Test -
-
-	Storm Spout for Kafka fork from Marcelo Valle. The original code is
-	patched by Marcelo Valle.
-
-- storm-hbase -
-
-	Storm to HBase connector fork from P. Taylor Goetz (Hortonworks)
+1. __Camus__: Kafka Camus is LinkedIn's Kafka HDFS pipeline 
+	* Marcelo Valle (Redoop) https://github.com/mvalleavila 
+2. __flume-ng-kafka-sink__: Flume to Kafka Sink
+	* Marcelo Valle (Redoop) https://github.com/mvalleavila/flume-ng-kafka-sink
+3. __storm-kafka__: Storm Spout for Kafka 
+	* Marcelo Valle (Redoop) https://github.com/mvalleavila/storm-kafka-0.8-plus
+4. __Storm-0.9.1-Kafka-0.8-Test__: Storm Topology for Kafka Spout example for testing
+	* Marcelo Valle (Redoop) https://github.com/mvalleavila/Storm-0.9.1-Kafka-0.8-Test
+5. __storm-hbase__: Storm to HBase connector 
+	* P. Taylor Goetz (Hortonworks) https://github.com/ptgoetz/storm-hbase
+6. __kafka-hue__: Hue application for Apache Kafka 
+	* Daniel Tardon (Redoop) https://github.com/danieltardon/kafka-hue
+7. __AvroRepoKafkaProducerTest__: kafka producer to send Avro Messages with an Avro schema repository 
+	* Marcelo Valle (Redoop) https://github.com/mvalleavila/AvroRepoKafkaProducerTest
+8. __avro-1.7.4-schema-repo__: Avro Schema Repository Server
+	* Marcelo Valle (Redoop) https://github.com/mvalleavila/avro-1.7.4-schema-repo
+9. __flume-ng-kafka-avro-sink__: Apache Flume sink to produce Avro messages to Apache Kafka linked with Avro Schema Respository Server from Camus.
+	* Daniel Tardon (Redoop): https://github.com/danieltardon/flume-ng-kafka-avro-sink
+10. __siddhi__: Siddhi CEP is a lightweight, easy-to-use Open Source Complex Event Processing Engine (CEP).
+	* WSO2: https://github.com/wso2/siddhi
 	
 Pull request flow
 ------------------
@@ -125,8 +162,8 @@ So the project has two branches:
 Roadmap
 -------
 
-| Feature        | Desc          | State  |
-| ------------- |:-------------: | -----:|
+| Feature        | Desc           | State  |
+| -------------  |:-------------- | :-----:|
 | Core Engine |Core building engine | Done |
 | POM versioning | Simple BOM multi-versioning | Done |
 | Git repsotory | Download sources from GIT | Done |
